@@ -22,7 +22,7 @@
     <!-- Title Area -->
     <li class="name">
     	<div class="sitetitle"><a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-	<img src="<?php echo get_stylesheet_directory_uri();?>/img/ddf_logo_icon.png"></a>
+	<img src="<?php echo get_stylesheet_directory_uri();?>/img/logo.png"></a>
 	</div>
     </li>
 
@@ -30,14 +30,7 @@
     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
     <li class="toggle-topbar "><a href="#"><span></span></a></li>
   </ul>
-  <ul class="tertieryLinks">
-	<li><a href="http://www.facebook.com/detroitdesignfestival" target="_blank" class="socialFacebook">Facebook</a></li>
-    <li><a href="http://twitter.com/DetDesignFest" target="_blank" class="socialTwitter">Twitter</a></li>
-    <!--<li><a href="http://instagram" class="socialInstagram">Instagram</a></li>-->
-    <li><a href="http://www.youtube.com/user/DetroitDesignFest" target="_blank" class="socialYouTube">YouTube</a></li>
-    <li><a href="http://vimeo.com/detroitdesignfestival" target="_blank" class="socialVimeo">Vimeo</a></li>
-    <li><a href="http://www.detroitcreativecorridorcenter.com/" target="_blank" class="socialDC3">DC3</a></li>
-</ul>
+  
 
   <section class="top-bar-section">
 	
@@ -76,3 +69,22 @@
       ?>
   </section>
 </nav>
+
+
+
+
+<?php if(is_front_page()): ?>
+	
+<?php elseif ( is_single()) : ?>
+
+<?php elseif ( is_archive()) : ?>
+
+<?php elseif(is_page('login')) : ?>
+
+<?php elseif (is_page('about')): ?>
+
+<?php elseif (is_page()): ?>
+	
+<?php else: ?>
+	
+<?php endif;  ?> 

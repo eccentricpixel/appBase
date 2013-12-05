@@ -3,22 +3,35 @@
 @import "typefaces";
 @import "mixins";
 @import "vars";
-
+@import "plugins";
 
 /*************** A P P L I C A T I O N   S T Y L E S ****************/
 /**************************************************************************/
 
+/* GLOBAL */
 html {
     background:@black;
+    height:100%;
 }
 body {
     background:@grey;
     color:@white;
     font-family: @font-family-base;
+    min-width:700px;
+    height:100%;
 }
+
+
 
 a {
     color:@links;
+    
+    &:hover {
+        color:@hover-links;
+        
+        .transition(all .35s @ease-out-quad );
+        
+    }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -26,6 +39,207 @@ h1, h2, h3, h4, h5, h6 {
   font-weight:normal;
 }
 
+
+.columnContent2 {
+    -moz-column-count:2; /* Firefox */
+    -webkit-column-count:2; /* Safari and Chrome */
+    column-count:2;
+    -moz-column-gap:1em; /* Firefox */
+    -webkit-column-gap:1em; /* Safari and Chrome */
+    column-gap:1em;
+}
+.columnContent3 {
+    -moz-column-count:3; /* Firefox */
+    -webkit-column-count:3; /* Safari and Chrome */
+    column-count:3;
+    -moz-column-gap:1em; /* Firefox */
+    -webkit-column-gap:1em; /* Safari and Chrome */
+    column-gap:1em;
+}
+.columnContent4 {
+    -moz-column-count:4; /* Firefox */
+    -webkit-column-count:4; /* Safari and Chrome */
+    column-count:4;
+    -moz-column-gap:1em; /* Firefox */
+    -webkit-column-gap:1em; /* Safari and Chrome */
+    column-gap:1em;
+}
+
+.hidden {
+    display:none;
+}
+
+
+.breadcrumbs {
+    background:none;
+    border:none;
+    
+    .current {
+        color:@grey;
+    }
+    
+    a {
+        color:@links;
+    }
+}
+
+
+
+/* CUSTOM SCROLLBAR (if jScrollPane JS included)  */
+    
+    /* !webkit-scrollbar */
+    
+    ::-webkit-scrollbar
+    {
+        width: @size-base * 2;
+    }
+    ::-webkit-scrollbar-button
+    {
+    }
+    ::-webkit-scrollbar-track
+    {
+        background-color: transparent;
+      //  .box-shadow(inset 0 0 3px rgba(0,0,0,.15));
+        
+    }
+    
+    ::-webkit-scrollbar-track-piece
+    {
+    }
+    ::-webkit-scrollbar-thumb
+    {
+       // background-color: fade(@color-dark, 20%);
+       background:url('../img/scroll-thumb.png') no-repeat;
+    }
+    ::-webkit-scrollbar-thumb:vertical
+    {
+       // background-color: fade(@color-dark, 20%);
+       background:url('../img/scroll-thumb.png') no-repeat;
+    }
+    ::-webkit-scrollbar-corner
+    {
+    }
+    ::-webkit-resizer
+    {
+    }
+    
+    /* !jscrollpane scrollbar */
+    
+    .jspContainer
+    {
+            overflow: hidden;
+            position: relative;
+    }
+    
+    .jspPane
+    {
+            position: absolute;
+    }
+    
+    .jspVerticalBar
+    {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 16px;
+            height: 100%;
+            background: red;
+    }
+    
+    .jspHorizontalBar
+    {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 16px;
+            background: red;
+    }
+    
+    .jspCap
+    {
+            display: none;
+    }
+    
+    .jspHorizontalBar .jspCap
+    {
+            float: left;
+    }
+    
+    .jspTrack
+    {
+            background: @scrollTrack;
+            position: relative;
+    }
+    
+    .jspDrag
+    {
+            background: @scrollDrag;
+            position: relative;
+            top: 0;
+            left: 0;
+            cursor: pointer;
+    }
+    
+    .jspHorizontalBar .jspTrack,
+    .jspHorizontalBar .jspDrag
+    {
+            float: left;
+            height: 100%;
+    }
+    
+    .jspArrow
+    {
+            background: @scrollArrow;
+            text-indent: -20000px;
+            display: block;
+            cursor: pointer;
+            padding: 0;
+            margin: 0;
+    }
+    
+    .jspArrow.jspDisabled
+    {
+            cursor: default;
+            background: @scrollArrow;
+    }
+    
+    .jspVerticalBar .jspArrow
+    {
+            height: 16px;
+    }
+    
+    .jspHorizontalBar .jspArrow
+    {
+            width: 16px;
+            float: left;
+            height: 100%;
+    }
+    
+    .jspVerticalBar .jspArrow:focus
+    {
+            outline: none;
+    }
+    
+    .jspCorner
+    {
+            background: @scrollCorner;
+            float: left;
+            height: 100%;
+    }
+    
+    /* Yuk! CSS Hack for IE6 3 pixel bug :( */
+    * html .jspCorner
+    {
+            margin: 0 -3px 0 0;
+    }
+
+
+
+
+
+
+/* FOOTER */
 
 #footer {
     position: relative;
@@ -45,9 +259,12 @@ h1, h2, h3, h4, h5, h6 {
         line-height: 1.1em;
     }
     
-    
+    .copyright {
+        font-family: @font-family-base-bold;
+      }
 }
 
+/* MAIN NAVIGATION */
 .top-bar {
     z-index: 1 !important;
     
@@ -73,108 +290,6 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     
-}
-
-.tertieryLinks {
-    
-    position: absolute;
-    top:8px;
-    left:52%;
-    padding:5px;
-      
-      
-      li {
-        list-style: none;
-        float:left;
-        
-      }
-      
-      
-    .socialFacebook {
-        background:url('../img/tertieryLinks.png') no-repeat;
-        background-position: 0 0;
-        text-indent: -9999px;
-        display:inline-block !important;
-     
-        width:10px;
-        height:17px;
-        
-        &:hover {
-             background:url('../img/tertieryLinks.png') no-repeat;
-             background-position: 0 -17px;
-             padding:0px;
-             
-             
-             .transition( all .15s @ease-out-sine );
-        }
-    }
-    
-    .socialTwitter {
-        background:url('../img/tertieryLinks.png') no-repeat;
-        background-position: -10px 0;
-        text-indent: -9999px;
-        display:inline-block !important;
-       
-        width:20px;
-        height:17px;
-        
-        &:hover {
-             background:url('../img/tertieryLinks.png') no-repeat;
-             background-position: -10px -17px;
-             padding:0px;
-             .transition( all .15s @ease-out-sine );
-        }
-    }
-    
-    .socialInstagram {
-        background:url('../img/tertieryLinks.png') no-repeat;
-        background-position: -30px 0;
-        text-indent: -9999px;
-        display:none !important;
-      
-        width:20px;
-        height:17px;
-        
-        &:hover {
-             background:url('../img/tertieryLinks.png') no-repeat;
-             background-position: -30px -17px;
-             padding:0px;
-             .transition( all .15s @ease-out-sine );
-        }
-    }
-    .socialYouTube {
-        background:url('../img/tertieryLinks.png') no-repeat;
-        background-position: -50px 0;
-        text-indent: -9999px;
-        display:inline-block !important;
-      
-        width:20px;
-        height:17px;
-        
-        &:hover {
-             background:url('../img/tertieryLinks.png') no-repeat;
-             background-position: -50px -17px;
-             padding:0px;
-             .transition( all .15s @ease-out-sine );
-        }
-    }
-    .socialVimeo {
-        background:url('../img/tertieryLinks.png') no-repeat;
-        background-position: -70px 0;
-        text-indent: -9999px;
-        display:inline-block !important;
-      
-        width:17px;
-        height:17px;
-        
-        &:hover {
-             background:url('../img/tertieryLinks.png') no-repeat;
-             background-position: -70px -17px;
-             padding:0px;
-             .transition( all .15s @ease-out-sine );
-        }
-    }
-  
 }
 
 
@@ -216,42 +331,44 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
 }
 
 
-::-webkit-input-placeholder
-{
-  color: #aaa !important;
-  font-weight: normal;
-}
-.placeholder
-{
-  color: #aaa !important;
-}
-
-
-button, .button, html input[type="button"], input[type="reset"], input[type="submit"] {
-    background: @links;
-    color:@white;
-    border:2px solid @links;
-    .border-radius(3px);
-    padding:0.2em 1em 0.2em;
-    text-transform: uppercase;
-    text-align: right;
-    width:100%;
-    font-family:@font-family-base;
-    font-weight: normal;
-    box-shadow:none;
-    clear:both;
-    
-    
-    &:hover {
-        border: 3px solid fade(@white, 20%);
-        background:fade(@links, 60%);
-        
-        
-        .transition( all .25s @ease-out-sine );
+    ::-webkit-input-placeholder
+    {
+      color: #aaa !important;
+      font-weight: normal;
     }
-}
+    .placeholder
+    {
+      color: #aaa !important;
+    }
+    
+    
+    button, .button, html input[type="button"], input[type="reset"], input[type="submit"] {
+        background: @links;
+        color:@white;
+        border:2px solid @links;
+        .border-radius(3px);
+        padding:0.2em 1em 0.2em;
+        text-transform: uppercase;
+        text-align: right;
+        width:100%;
+        font-family:@font-family-base;
+        font-weight: normal;
+        box-shadow:none;
+        clear:both;
+        
+        
+        &:hover {
+            border: 3px solid fade(@white, 20%);
+            background:fade(@links, 60%);
+            
+            
+            .transition( all .25s @ease-out-sine );
+        }
+    }
 
 
+
+/* TABLES */
 
 table {
     background:transparent;
@@ -264,7 +381,7 @@ table tr.even, table tr.alt, table tr:nth-of-type(even) {
 
 
 
-/*  general  */
+/*  GENERAL  */
 
 
 .white {
@@ -284,9 +401,6 @@ table tr.even, table tr.alt, table tr:nth-of-type(even) {
 }
 .txtJustify {
     text-align: justify;
-}
-.copyright {
-  font-family: @font-family-base-bold;
 }
 
 .insetCopy {
@@ -322,6 +436,10 @@ table tr.even, table tr.alt, table tr:nth-of-type(even) {
 }
 
 
+
+
+
+
 /* MODAL WINDOWS */
 
 .close-reveal-modal {
@@ -341,10 +459,7 @@ table tr.even, table tr.alt, table tr:nth-of-type(even) {
 
 
 
-    
-   
-/********************/
-/*  backgrounds */
+/*  BACKGROUNDS */
 
 .bgFill {
     position: absolute;
@@ -366,10 +481,20 @@ table tr.even, table tr.alt, table tr:nth-of-type(even) {
 
 
 
-/**************************/
-/****** SECTIONS ********/
+/*=========================================================*/
+/*********** H O M E **************/
+/*=========================================================*/
 
-/* Home */
+
+/*=========================================================*/
+/*********** A B O U T **************/
+/*=========================================================*/
+
+
+/*=========================================================*/
+/*********** C O N T A C T **************/
+/*=========================================================*/
+
 
 
 
@@ -381,6 +506,14 @@ table tr.even, table tr.alt, table tr:nth-of-type(even) {
 
 /* We use this media query to add styles to any device that supports media queries */
 @media only screen { }
+
+/* This is where the mobile menu kicks in.   */
+@media only screen and (max-width: 58.75em) {
+    
+    .row {
+        max-width:43.5em !important;
+    }
+}
 
 
 @media only screen and (max-width: 980px) {
