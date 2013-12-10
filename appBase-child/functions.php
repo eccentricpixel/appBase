@@ -15,7 +15,7 @@ function load_appBase_child_scripts() {
 	);
 	
 	wp_enqueue_script(
-		'app_js',
+		'plugins_js',
 		get_stylesheet_directory_uri() . '/js/plugins.min.js',
 		array(),
 		true
