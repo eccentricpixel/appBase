@@ -14,6 +14,15 @@ function load_appBase_child_scripts() {
 		'all'
 	);
 	
+	global $wp_styles;
+	wp_enqueue_style(
+		'ie_fixes',
+		get_stylesheet_directory_uri() . '/css/ieFixes.css',
+		array( ),
+		'all'
+	);
+	$wp_styles->add_data( 'ie_fixes', 'conditional', 'lt IE 10' );
+	
 	wp_enqueue_script(
 		'plugins_js',
 		get_stylesheet_directory_uri() . '/js/plugins.min.js',

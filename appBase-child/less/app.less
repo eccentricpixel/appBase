@@ -1,4 +1,4 @@
-
+@import "lesshat";
 @import "easings";
 @import "typefaces";
 @import "mixins";
@@ -38,6 +38,32 @@ h1, h2, h3, h4, h5, h6 {
   font-family: @font-family-heading;
   font-weight:normal;
 }
+
+
+video {
+  max-width: 100%;
+  height: auto !important;
+}
+
+/* mediaElement.js Fixes for Responsiveness */
+.mejs-container {
+  width: 100% !important;
+  height: auto !important;
+  padding-top: 57%;
+  background:none;
+}
+.mejs-overlay, .mejs-poster {
+  width: 100% !important;
+  height: 100% !important;
+}
+.mejs-mediaelement video {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+
 
 
 .columnContent2 {
@@ -511,50 +537,32 @@ table tr.even, table tr.alt, table tr:nth-of-type(even) {
 @media only screen and (max-width: 58.75em) {
     
     .row {
-        max-width:43.5em !important;
+    //    max-width:43.5em !important;
     }
 }
 
+// Small screens
+@media only screen { } /* Define mobile styles */
 
-@media only screen and (max-width: 980px) {
-    
-    
-}
+@media only screen and (max-width: 40em) { } /* max-width 640px, mobile-only styles, use when QAing mobile issues */
 
+// Medium screens
+@media only screen and (min-width: 40.063em) { } /* min-width 641px, medium screens */
 
-@media only screen and (min-width: 550px) and (max-width:1001px) {
-    
-   
-   
-}
-@media only screen and (min-width: 550px) and (max-width:769px) {
-    
-   
-   
-}
-@media only screen and (min-width: 770px) and (max-width:920px) {
-    
-  
-   
-}
-@media only screen and (max-width:549px) {
-    
+@media only screen and (min-width: 40.063em) and (max-width: 64em) { } /* min-width 641px and max-width 1024px, use when QAing tablet-only issues */
 
-}
+// Large screens
+@media only screen and (min-width: 64.063em) { } /* min-width 1025px, large screens */
 
-/* Used to alter styles for screens at least 768px wide. This is where the grid changes. */
-@media only screen and (min-width: 768px) {
-    
-}
+@media only screen and (min-width: 64.063em) and (max-width: 90em) { } /* min-width 1024px and max-width 1440px, use when QAing large screen-only issues */
 
-/* Used to alter styles for screens at least 1280px wide. */
-@media only screen and (min-width: 1280px) {
-    
-   
-}
+// XLarge screens
+@media only screen and (min-width: 90.063em) { } /* min-width 1441px, xlarge screens */
 
-/* Used to alter styles for screens at least 1440px wide. */
-@media only screen and (min-width: 1440px) {}
+@media only screen and (min-width: 90.063em) and (max-width: 120em) { } /* min-width 1441px and max-width 1920px, use when QAing xlarge screen-only issues */
+
+// XXLarge screens
+@media only screen and (min-width: 120.063em) { } /* min-width 1921px, xlarge screens */
 
 /* Apply styles to screens in landscape orientation */
 @media only screen and (orientation: landscape) {}
@@ -565,6 +573,48 @@ table tr.even, table tr.alt, table tr:nth-of-type(even) {
 /* We also use Modernizr to add a .touch class to the body when applicable */
 /* You can prepend this class to anything and it will style only for touch devices */
 .touch .your-element {}
+
+
+/**************/
+/* IE 10 hacks   ( put everything for 9 under in ieFixes.less)  script must be added in head to add ie10 to html tag  */
+/**************/
+
+.ie10 {
+    
+}
+
+
+
+
+/************************************/
+/*  Firefox Fixes   - any version   */
+/************************************/
+
+@-moz-document url-prefix() { 
+
+}
+
+/******************************************/
+/*   IOS iPhone 5 portrait and landscape  */
+/******************************************/
+
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 568px) {
+    
+  
+}
+
+
+/******************************************/
+/*   IOS iPad portrait and landscape  */
+/******************************************/
+
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px)  { /* STYLES GO HERE */}
+
+
 
 
 ///   THESE AREN'T THE DROIDS YOU ARE LOOKING FOR   ///

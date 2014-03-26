@@ -62,6 +62,13 @@ function load_appBase_scripts() {
 		'5.1.1',
 		true
 	);
+	wp_enqueue_script(
+		'rem_js',
+		get_template_directory_uri() . '/js/rem.min.js',
+		array(),
+		'1',
+		false
+	);
 
 }
 
